@@ -1,8 +1,17 @@
+const commonQuestions = [
+  '기본 2주 가격에 식사, 신생아 케어, 산모 교육이 모두 포함되는지 확인',
+  '예약금, 예정일 변경, 조기 출산, 취소 시 환불 기준 확인',
+  '신생아실 근무 인력과 야간 대응 방식 확인',
+  '소아과 회진 주기와 응급상황 연계 병원 확인',
+  '보호자 출입, 숙박, 식사 추가 비용 확인'
+];
+
 const nurseries = [
   {
     rank:1,
     name:'헤세드 산후조리원',
     old:'구 드팜므 산후조리원 위례점',
+    area:'위례권',
     distance:7,
     time:'15~20분',
     price:'500~700만원',
@@ -11,7 +20,10 @@ const nurseries = [
     rating:4.9,
     hospital:'보통',
     facility:'호텔형 시설, 위례권 프리미엄, 깔끔한 공간 후기 중심',
+    detail:'프리미엄 시설과 조용한 회복 환경을 우선으로 보는 경우 비교 가치가 큽니다.',
+    care:'산모 휴식, 신생아 케어, 위례권 접근성을 함께 확인하세요.',
     scores:{distance:'A', price:'B', rating:'A+', massage:'A', hospital:'B+'},
+    checks:['마사지 포함 횟수와 추가 패키지 가격', '보호자 숙박 가능 여부', '방 타입별 실제 2주 비용'],
     blog:'https://search.naver.com/search.naver?query=헤세드+산후조리원+위례+후기',
     map:'https://map.naver.com/p/search/헤세드%20산후조리원',
     phone:'031-755-5366'
@@ -20,6 +32,7 @@ const nurseries = [
     rank:2,
     name:'맘스파크 산후조리원',
     old:'',
+    area:'성남 수정구',
     distance:3,
     time:'8~10분',
     price:'300~450만원',
@@ -28,7 +41,10 @@ const nurseries = [
     rating:4.7,
     hospital:'보통',
     facility:'수정구 기준 접근성 우수, 가성비 후기 중심',
+    detail:'가까운 이동 거리와 합리적인 가격대를 함께 보는 후보입니다.',
+    care:'상담 시 객실 컨디션과 신생아실 운영 기준을 직접 확인하는 것이 좋습니다.',
     scores:{distance:'A+', price:'A', rating:'A', massage:'A+', hospital:'B+'},
+    checks:['주차와 이동 동선', '기본 가격 포함 항목', '신생아실 인력 배치'],
     blog:'https://search.naver.com/search.naver?query=맘스파크+산후조리원+후기',
     map:'https://map.naver.com/p/search/맘스파크%20산후조리원',
     phone:''
@@ -37,6 +53,7 @@ const nurseries = [
     rank:3,
     name:'곽생로여성병원 산후조리원',
     old:'',
+    area:'성남 수정구',
     distance:2,
     time:'5~8분',
     price:'300~500만원',
@@ -45,7 +62,10 @@ const nurseries = [
     rating:4.6,
     hospital:'강함',
     facility:'병원 연계 장점, 의료 접근성 후기 중심',
+    detail:'병원 연계와 가까운 의료 접근성을 중요하게 볼 때 우선 비교할 후보입니다.',
+    care:'소아과 회진, 황달 대응, 응급상황 보고 체계를 자세히 물어보세요.',
     scores:{distance:'A+', price:'A', rating:'A', massage:'A', hospital:'A+'},
+    checks:['병원 연계 범위', '소아과 회진 주기', '응급상황 이동 절차'],
     blog:'https://search.naver.com/search.naver?query=곽생로+산후조리원+후기',
     map:'https://map.naver.com/p/search/곽생로여성병원%20산후조리원',
     phone:''
@@ -54,6 +74,7 @@ const nurseries = [
     rank:4,
     name:'위례포르투나 산후조리원',
     old:'',
+    area:'위례권',
     distance:8,
     time:'15~20분',
     price:'400~600만원',
@@ -62,7 +83,10 @@ const nurseries = [
     rating:4.8,
     hospital:'보통',
     facility:'프라이빗하고 신축급 시설 선호 후기 중심',
+    detail:'시설 컨디션과 프라이빗한 분위기를 중요하게 보는 경우 비교하기 좋습니다.',
+    care:'객실별 가격 차이와 모자동실 운영 방식을 확인하세요.',
     scores:{distance:'A', price:'B+', rating:'A+', massage:'A', hospital:'B+'},
+    checks:['방 타입별 가격', '면회와 보호자 출입', '모자동실 선택 가능 여부'],
     blog:'https://search.naver.com/search.naver?query=위례포르투나+산후조리원+후기',
     map:'https://map.naver.com/p/search/위례포르투나%20산후조리원',
     phone:''
@@ -71,6 +95,7 @@ const nurseries = [
     rank:5,
     name:'오르빛 산후조리원',
     old:'',
+    area:'분당권',
     distance:10,
     time:'20~25분',
     price:'500~700만원',
@@ -79,7 +104,10 @@ const nurseries = [
     rating:4.7,
     hospital:'보통',
     facility:'분당권 프리미엄 시설, 산모 케어 후기 중심',
+    detail:'분당권 프리미엄 후보로 시설과 산모 케어 프로그램을 비교해볼 만합니다.',
+    care:'이동 시간이 길 수 있어 출산 병원과의 동선을 함께 계산하세요.',
     scores:{distance:'B+', price:'B', rating:'A', massage:'B+', hospital:'B+'},
+    checks:['차량 이동 시간', '케어 프로그램 구성', '마사지 패키지 비용'],
     blog:'https://search.naver.com/search.naver?query=오르빛+산후조리원+후기',
     map:'https://map.naver.com/p/search/오르빛%20산후조리원',
     phone:''
@@ -88,6 +116,7 @@ const nurseries = [
     rank:6,
     name:'디아망 산후조리원',
     old:'',
+    area:'분당권',
     distance:12,
     time:'20~25분',
     price:'500~700만원',
@@ -96,7 +125,10 @@ const nurseries = [
     rating:4.6,
     hospital:'보통',
     facility:'시설 만족도와 조용한 분위기 후기 중심',
+    detail:'조용한 회복 환경과 시설 만족도를 우선한다면 비교 후보로 둘 수 있습니다.',
+    care:'가격대가 있는 편이라 포함 서비스와 추가 비용을 나눠 확인하세요.',
     scores:{distance:'B+', price:'B', rating:'A', massage:'B+', hospital:'B+'},
+    checks:['기본 포함 서비스', '추가 마사지 비용', '보호자 식사 비용'],
     blog:'https://search.naver.com/search.naver?query=디아망+산후조리원+후기',
     map:'https://map.naver.com/p/search/디아망%20산후조리원',
     phone:''
@@ -105,6 +137,7 @@ const nurseries = [
     rank:7,
     name:'분당제일 산후조리원',
     old:'',
+    area:'분당권',
     distance:12,
     time:'20~25분',
     price:'400~600만원',
@@ -113,7 +146,10 @@ const nurseries = [
     rating:4.5,
     hospital:'강함',
     facility:'병원 연계와 의료 접근성 장점',
+    detail:'의료 연계 안정성을 중시할 때 비교 가치가 있는 분당권 후보입니다.',
+    care:'병원 연계 범위와 조리원 입실 조건을 상담에서 확인하세요.',
     scores:{distance:'B+', price:'B+', rating:'B+', massage:'A', hospital:'A+'},
+    checks:['병원 연계 범위', '입실 가능 조건', '소아과 회진 주기'],
     blog:'https://search.naver.com/search.naver?query=분당제일+산후조리원+후기',
     map:'https://map.naver.com/p/search/분당제일%20산후조리원',
     phone:''
@@ -122,6 +158,7 @@ const nurseries = [
     rank:8,
     name:'엄마손 산후조리원 분당점',
     old:'',
+    area:'분당권',
     distance:13,
     time:'25분',
     price:'350~550만원',
@@ -130,29 +167,32 @@ const nurseries = [
     rating:4.4,
     hospital:'보통',
     facility:'신생아 케어와 생활 편의 후기 중심',
+    detail:'생활 편의와 신생아 케어 후기를 함께 보며 비교할 수 있는 후보입니다.',
+    care:'거리와 실제 상담 가격을 같이 비교해 최종 후보에 넣을지 판단하세요.',
     scores:{distance:'B', price:'A', rating:'B+', massage:'A', hospital:'B+'},
+    checks:['실제 상담 가격', '신생아실 운영 방식', '퇴실 후 연계 상담'],
     blog:'https://search.naver.com/search.naver?query=엄마손+산후조리원+분당점+후기',
     map:'https://map.naver.com/p/search/엄마손%20산후조리원%20분당점',
     phone:''
   }
 ];
 
-const mealPlans = {
-  '6월': [
-    {type:'조식', title:'미역국 회복식', icon:'🥣', items:['소고기 미역국','잡곡밥','계란찜','나물 반찬']},
-    {type:'중식', title:'단백질 보강식', icon:'🍗', items:['소불고기','두부 샐러드','맑은 국','제철 과일']},
-    {type:'석식', title:'가벼운 균형식', icon:'🐟', items:['연어구이','버섯 들깨탕','채소 반찬','요거트']}
-  ],
-  '7월': [
-    {type:'조식', title:'담백한 산모식', icon:'🍚', items:['황태 미역국','잡곡밥','두부조림','오이무침']},
-    {type:'중식', title:'여름 보양식', icon:'🍲', items:['닭안심 탕','감자조림','샐러드','수박']},
-    {type:'석식', title:'속 편한 저녁', icon:'🥬', items:['흰살생선찜','근대국','나물 반찬','따뜻한 차']}
-  ],
-  '8월': [
-    {type:'조식', title:'수유 에너지식', icon:'🥛', items:['들깨 미역국','잡곡밥','스크램블','견과류']},
-    {type:'중식', title:'철분 보강식', icon:'🥩', items:['불고기','시금치나물','미소국','과일컵']},
-    {type:'석식', title:'편안한 회복식', icon:'🍠', items:['닭가슴살구이','호박죽','채소 반찬','고구마']}
-  ]
+const mealMonths = {
+  '6월': {
+    image:'assets/meal-june.png',
+    title:'June Meal Table',
+    note:'제공 이미지 기반 월별 식단표'
+  },
+  '7월': {
+    image:'',
+    title:'July Meal Table',
+    note:'7월 식단표 이미지를 추가하면 바로 표시됩니다.'
+  },
+  '8월': {
+    image:'',
+    title:'August Meal Table',
+    note:'8월 식단표 이미지를 추가하면 바로 표시됩니다.'
+  }
 };
 
 const checklist = {
@@ -201,8 +241,8 @@ const state = {
   checkCategory:'예약'
 };
 
-const STORAGE_CHECKS = 'baby.checklist.v2';
-const STORAGE_MEMOS = 'baby.memos.v2';
+const STORAGE_CHECKS = 'baby.checklist.v3';
+const STORAGE_MEMOS = 'baby.memos.v3';
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => Array.from(document.querySelectorAll(selector));
@@ -224,7 +264,7 @@ function saveJSON(key, value){
   try{
     localStorage.setItem(key, JSON.stringify(value));
   }catch(error){
-    // 저장 공간을 사용할 수 없는 브라우저에서도 화면 동작은 유지합니다.
+    // localStorage를 사용할 수 없는 환경에서도 UI는 계속 동작합니다.
   }
 }
 
@@ -239,14 +279,20 @@ function escapeHTML(value){
 }
 
 function rankLabel(rank){
-  return rank <= 3 ? ['1위','2위','3위'][rank - 1] : `${rank}위`;
+  return `${rank}위`;
+}
+
+function phoneAction(nursery){
+  return nursery.phone
+    ? `<a href="tel:${nursery.phone}">전화하기</a>`
+    : `<a href="${nursery.map}" target="_blank" rel="noopener">지도보기</a>`;
 }
 
 function filterNurseries(){
   const query = state.search.trim().toLowerCase();
   const result = nurseries.filter((nursery) => {
     if(!query) return true;
-    return `${nursery.name} ${nursery.old} ${nursery.facility}`.toLowerCase().includes(query);
+    return `${nursery.name} ${nursery.old} ${nursery.area} ${nursery.facility}`.toLowerCase().includes(query);
   });
 
   const sorters = {
@@ -276,11 +322,8 @@ function renderHomeCards(){
       <span class="rank-badge">${rankLabel(nursery.rank)}</span>
       <span class="recommend-main">
         <strong>${escapeHTML(nursery.name)}</strong>
-        <span>⭐ ${nursery.rating} · 🚗 ${nursery.time}</span>
-      </span>
-      <span class="recommend-meta">
-        <span>${nursery.distance}km</span>
-        <span>${nursery.price}</span>
+        <span>⭐ ${nursery.rating} · 🚗 ${nursery.time} · 📍 ${nursery.distance}km</span>
+        <span>💰 ${nursery.price}</span>
       </span>
     </button>
   `).join('') : '<div class="empty-state">검색 결과가 없습니다.</div>';
@@ -295,7 +338,7 @@ function renderNurseries(){
         <span class="rank-badge">${rankLabel(nursery.rank)}</span>
         <div class="nursery-title">
           <h3>${escapeHTML(nursery.name)}</h3>
-          ${nursery.old ? `<p>${escapeHTML(nursery.old)}</p>` : ''}
+          <p>${escapeHTML(nursery.old || nursery.area)}</p>
         </div>
       </div>
       <div class="metric-list">
@@ -304,15 +347,13 @@ function renderNurseries(){
         <div class="metric"><i>📍</i><span>${nursery.distance}km</span></div>
         <div class="metric"><i>💰</i><span>${nursery.price}</span></div>
         <div class="metric"><i>💆</i><span>${nursery.massage}</span></div>
-        <div class="metric"><i>🏥</i><span>병원연계 : ${nursery.hospital}</span></div>
+        <div class="metric"><i>🏥</i><span>병원연계 ${nursery.hospital}</span></div>
       </div>
       <p class="card-note">${escapeHTML(nursery.facility)}</p>
       <div class="card-actions">
         <button data-detail="${nursery.rank}">상세보기</button>
         <a href="${nursery.blog}" target="_blank" rel="noopener">블로그 후기</a>
-        ${nursery.phone
-          ? `<a href="tel:${nursery.phone}">전화하기</a>`
-          : `<a href="${nursery.map}" target="_blank" rel="noopener">전화하기</a>`}
+        ${phoneAction(nursery)}
       </div>
     </article>
   `).join('') : '<div class="empty-state">검색 결과가 없습니다.</div>';
@@ -335,27 +376,34 @@ function renderScores(){
 }
 
 function renderMonthTabs(){
-  $('#monthTabs').innerHTML = Object.keys(mealPlans).map((month) => `
+  $('#monthTabs').innerHTML = Object.keys(mealMonths).map((month) => `
     <button class="${month === state.month ? 'active' : ''}" data-month="${month}">${month}</button>
   `).join('');
 }
 
 function renderMeals(){
-  const plans = mealPlans[state.month];
-  $('#mealGrid').innerHTML = plans.map((meal) => `
-    <article class="meal-card">
-      <div class="meal-photo">
-        <strong>${escapeHTML(meal.title)}</strong>
-        <span>${meal.icon}</span>
+  const meal = mealMonths[state.month];
+  $('#mealGrid').innerHTML = meal.image ? `
+    <article class="meal-image-card">
+      <div class="meal-card-head">
+        <div>
+          <span>${state.month} 식단표</span>
+          <strong>${escapeHTML(meal.title)}</strong>
+        </div>
+        <a href="${meal.image}" target="_blank" rel="noopener">원본</a>
       </div>
-      <div class="meal-body">
-        <p>${state.month} · ${escapeHTML(meal.type)}</p>
-        <ul class="meal-items">
-          ${meal.items.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}
-        </ul>
+      <div class="meal-image-frame">
+        <img src="${meal.image}" alt="${state.month} 산모 식단표" />
       </div>
+      <p class="meal-caption">${escapeHTML(meal.note)}</p>
     </article>
-  `).join('');
+  ` : `
+    <article class="meal-placeholder">
+      <span>${state.month}</span>
+      <strong>${escapeHTML(meal.title)}</strong>
+      <p>${escapeHTML(meal.note)}</p>
+    </article>
+  `;
 }
 
 function renderCheckTabs(){
@@ -455,29 +503,47 @@ function showScreen(name){
 function openDetail(rank){
   const nursery = nurseries.find((item) => item.rank === Number(rank));
   if(!nursery) return;
+  const checks = [...nursery.checks, ...commonQuestions];
 
   $('#modalCard').innerHTML = `
     <button class="modal-close" data-close="modal">×</button>
     <div class="modal-head">
       <span class="rank-badge">${rankLabel(nursery.rank)}</span>
       <h2>${escapeHTML(nursery.name)}</h2>
-      ${nursery.old ? `<p>${escapeHTML(nursery.old)}</p>` : ''}
+      <p>${escapeHTML(nursery.old || nursery.area)} · ${nursery.distance}km · 차량 ${nursery.time}</p>
     </div>
     <div class="modal-metrics">
       <div class="metric"><i>⭐</i><span>${nursery.rating}</span></div>
-      <div class="metric"><i>🚗</i><span>${nursery.time}</span></div>
-      <div class="metric"><i>📍</i><span>${nursery.distance}km</span></div>
       <div class="metric"><i>💰</i><span>${nursery.price}</span></div>
       <div class="metric"><i>💆</i><span>${nursery.massage}</span></div>
       <div class="metric"><i>🏥</i><span>${nursery.hospital}</span></div>
     </div>
+    <section class="detail-section">
+      <h3>상세 요약</h3>
+      <p>${escapeHTML(nursery.detail)}</p>
+      <p>${escapeHTML(nursery.care)}</p>
+    </section>
+    <section class="detail-section">
+      <h3>비교 등급</h3>
+      <div class="detail-grid">
+        <span>거리 <strong>${nursery.scores.distance}</strong></span>
+        <span>가격 <strong>${nursery.scores.price}</strong></span>
+        <span>평점 <strong>${nursery.scores.rating}</strong></span>
+        <span>마사지 <strong>${nursery.scores.massage}</strong></span>
+        <span>병원연계 <strong>${nursery.scores.hospital}</strong></span>
+      </div>
+    </section>
+    <section class="detail-section">
+      <h3>상담 때 확인할 내용</h3>
+      <ul class="detail-list">
+        ${checks.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}
+      </ul>
+    </section>
     <p class="modal-review">${escapeHTML(nursery.facility)}</p>
     <div class="modal-links">
       <a href="${nursery.blog}" target="_blank" rel="noopener">블로그 후기</a>
       <a href="${nursery.map}" target="_blank" rel="noopener">지도 검색</a>
-      ${nursery.phone
-        ? `<a href="tel:${nursery.phone}">전화하기</a>`
-        : `<a href="${nursery.map}" target="_blank" rel="noopener">전화하기</a>`}
+      ${phoneAction(nursery)}
     </div>
   `;
 
