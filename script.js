@@ -1,186 +1,569 @@
 const nurseries = [
-  {rank:1,name:'헤세드 산후조리원',old:'구 드팜므 산후조리원 위례점',distance:7,time:'15~20분',price:'500~700만원대',priceLevel:600,massage:'10~20만원/회',rating:'4.9',facility:'호텔형 시설, 위례권 프리미엄, 깔끔한 공간 후기 중심',blog:'https://search.naver.com/search.naver?query=헤세드+산후조리원+위례+후기',map:'https://map.naver.com/p/search/헤세드%20산후조리원',phone:'031-755-5366'},
-  {rank:2,name:'맘스파크 산후조리원',old:'',distance:3,time:'8~10분',price:'300~450만원대',priceLevel:380,massage:'8~15만원/회',rating:'4.7',facility:'수정구 기준 접근성 우수, 가성비 후기 중심',blog:'https://search.naver.com/search.naver?query=맘스파크+산후조리원+후기',map:'https://map.naver.com/p/search/맘스파크%20산후조리원',phone:''},
-  {rank:3,name:'곽생로여성병원 산후조리원',old:'',distance:2,time:'5~8분',price:'300~500만원대',priceLevel:400,massage:'10~20만원/회',rating:'4.6',facility:'병원 연계 장점, 의료 접근성 후기 중심',blog:'https://search.naver.com/search.naver?query=곽생로+산후조리원+후기',map:'https://map.naver.com/p/search/곽생로여성병원%20산후조리원',phone:''},
-  {rank:4,name:'위례포르투나 산후조리원',old:'',distance:8,time:'15~20분',price:'400~600만원대',priceLevel:520,massage:'10~20만원/회',rating:'4.8',facility:'프라이빗하고 신축급 시설 선호 후기 중심',blog:'https://search.naver.com/search.naver?query=위례포르투나+산후조리원+후기',map:'https://map.naver.com/p/search/위례포르투나%20산후조리원',phone:''},
-  {rank:5,name:'오르빛 산후조리원',old:'',distance:10,time:'20~25분',price:'500~700만원대',priceLevel:620,massage:'15~25만원/회',rating:'4.7',facility:'분당권 프리미엄 시설, 산모 케어 후기 중심',blog:'https://search.naver.com/search.naver?query=오르빛+산후조리원+후기',map:'https://map.naver.com/p/search/오르빛%20산후조리원',phone:''},
-  {rank:6,name:'디아망 산후조리원',old:'',distance:12,time:'20~25분',price:'500~700만원대',priceLevel:620,massage:'15~25만원/회',rating:'4.6',facility:'시설 만족도와 조용한 분위기 후기 중심',blog:'https://search.naver.com/search.naver?query=디아망+산후조리원+후기',map:'https://map.naver.com/p/search/디아망%20산후조리원',phone:''},
-  {rank:7,name:'분당제일 산후조리원',old:'',distance:12,time:'20~25분',price:'400~600만원대',priceLevel:520,massage:'10~20만원/회',rating:'4.5',facility:'병원 연계와 의료 접근성 장점',blog:'https://search.naver.com/search.naver?query=분당제일+산후조리원+후기',map:'https://map.naver.com/p/search/분당제일%20산후조리원',phone:''},
-  {rank:8,name:'엄마손 산후조리원 분당점',old:'',distance:13,time:'25분',price:'350~550만원대',priceLevel:450,massage:'10~20만원/회',rating:'4.4',facility:'신생아 케어와 생활 편의 후기 중심',blog:'https://search.naver.com/search.naver?query=엄마손+산후조리원+분당점+후기',map:'https://map.naver.com/p/search/엄마손%20산후조리원%20분당점',phone:''}
+  {
+    rank:1,
+    name:'헤세드 산후조리원',
+    old:'구 드팜므 산후조리원 위례점',
+    distance:7,
+    time:'15~20분',
+    price:'500~700만원',
+    priceLevel:600,
+    massage:'10~20만원',
+    rating:4.9,
+    hospital:'보통',
+    facility:'호텔형 시설, 위례권 프리미엄, 깔끔한 공간 후기 중심',
+    scores:{distance:'A', price:'B', rating:'A+', massage:'A', hospital:'B+'},
+    blog:'https://search.naver.com/search.naver?query=헤세드+산후조리원+위례+후기',
+    map:'https://map.naver.com/p/search/헤세드%20산후조리원',
+    phone:'031-755-5366'
+  },
+  {
+    rank:2,
+    name:'맘스파크 산후조리원',
+    old:'',
+    distance:3,
+    time:'8~10분',
+    price:'300~450만원',
+    priceLevel:380,
+    massage:'8~15만원',
+    rating:4.7,
+    hospital:'보통',
+    facility:'수정구 기준 접근성 우수, 가성비 후기 중심',
+    scores:{distance:'A+', price:'A', rating:'A', massage:'A+', hospital:'B+'},
+    blog:'https://search.naver.com/search.naver?query=맘스파크+산후조리원+후기',
+    map:'https://map.naver.com/p/search/맘스파크%20산후조리원',
+    phone:''
+  },
+  {
+    rank:3,
+    name:'곽생로여성병원 산후조리원',
+    old:'',
+    distance:2,
+    time:'5~8분',
+    price:'300~500만원',
+    priceLevel:400,
+    massage:'10~20만원',
+    rating:4.6,
+    hospital:'강함',
+    facility:'병원 연계 장점, 의료 접근성 후기 중심',
+    scores:{distance:'A+', price:'A', rating:'A', massage:'A', hospital:'A+'},
+    blog:'https://search.naver.com/search.naver?query=곽생로+산후조리원+후기',
+    map:'https://map.naver.com/p/search/곽생로여성병원%20산후조리원',
+    phone:''
+  },
+  {
+    rank:4,
+    name:'위례포르투나 산후조리원',
+    old:'',
+    distance:8,
+    time:'15~20분',
+    price:'400~600만원',
+    priceLevel:520,
+    massage:'10~20만원',
+    rating:4.8,
+    hospital:'보통',
+    facility:'프라이빗하고 신축급 시설 선호 후기 중심',
+    scores:{distance:'A', price:'B+', rating:'A+', massage:'A', hospital:'B+'},
+    blog:'https://search.naver.com/search.naver?query=위례포르투나+산후조리원+후기',
+    map:'https://map.naver.com/p/search/위례포르투나%20산후조리원',
+    phone:''
+  },
+  {
+    rank:5,
+    name:'오르빛 산후조리원',
+    old:'',
+    distance:10,
+    time:'20~25분',
+    price:'500~700만원',
+    priceLevel:620,
+    massage:'15~25만원',
+    rating:4.7,
+    hospital:'보통',
+    facility:'분당권 프리미엄 시설, 산모 케어 후기 중심',
+    scores:{distance:'B+', price:'B', rating:'A', massage:'B+', hospital:'B+'},
+    blog:'https://search.naver.com/search.naver?query=오르빛+산후조리원+후기',
+    map:'https://map.naver.com/p/search/오르빛%20산후조리원',
+    phone:''
+  },
+  {
+    rank:6,
+    name:'디아망 산후조리원',
+    old:'',
+    distance:12,
+    time:'20~25분',
+    price:'500~700만원',
+    priceLevel:620,
+    massage:'15~25만원',
+    rating:4.6,
+    hospital:'보통',
+    facility:'시설 만족도와 조용한 분위기 후기 중심',
+    scores:{distance:'B+', price:'B', rating:'A', massage:'B+', hospital:'B+'},
+    blog:'https://search.naver.com/search.naver?query=디아망+산후조리원+후기',
+    map:'https://map.naver.com/p/search/디아망%20산후조리원',
+    phone:''
+  },
+  {
+    rank:7,
+    name:'분당제일 산후조리원',
+    old:'',
+    distance:12,
+    time:'20~25분',
+    price:'400~600만원',
+    priceLevel:520,
+    massage:'10~20만원',
+    rating:4.5,
+    hospital:'강함',
+    facility:'병원 연계와 의료 접근성 장점',
+    scores:{distance:'B+', price:'B+', rating:'B+', massage:'A', hospital:'A+'},
+    blog:'https://search.naver.com/search.naver?query=분당제일+산후조리원+후기',
+    map:'https://map.naver.com/p/search/분당제일%20산후조리원',
+    phone:''
+  },
+  {
+    rank:8,
+    name:'엄마손 산후조리원 분당점',
+    old:'',
+    distance:13,
+    time:'25분',
+    price:'350~550만원',
+    priceLevel:450,
+    massage:'10~20만원',
+    rating:4.4,
+    hospital:'보통',
+    facility:'신생아 케어와 생활 편의 후기 중심',
+    scores:{distance:'B', price:'A', rating:'B+', massage:'A', hospital:'B+'},
+    blog:'https://search.naver.com/search.naver?query=엄마손+산후조리원+분당점+후기',
+    map:'https://map.naver.com/p/search/엄마손%20산후조리원%20분당점',
+    phone:''
+  }
 ];
 
-const faqs = [
-  {q:'기본 2주 가격에 정확히 무엇이 포함되나요?',a:'입실료, 식사, 신생아 케어, 산모 교육, 마사지 포함 횟수, 추가 프로그램 비용을 분리해서 확인하세요.'},
-  {q:'예약금과 환불 규정은 어떻게 되나요?',a:'출산 예정일 변경, 조기 출산, 병원 입원, 취소 시점별 환불 가능 여부를 계약서로 확인하세요.'},
-  {q:'신생아실은 24시간 운영되고 간호 인력은 몇 명인가요?',a:'아기 수 대비 근무 인력, 야간 근무 인원, 응급상황 보고 체계, CCTV 확인 가능 여부를 물어보세요.'},
-  {q:'소아과 회진은 주 몇 회 진행되나요?',a:'회진 주기, 추가 진료 필요 시 연계 병원, 황달·체중감소·수유 문제 발생 시 대응 기준을 확인하세요.'},
-  {q:'감염관리와 면회 기준은 어떻게 운영되나요?',a:'면회 가능 인원, 배우자 출입, 감기·설사 증상자 제한, 신생아 격리 기준을 확인하세요.'},
-  {q:'모자동실은 의무인가요, 선택인가요?',a:'모자동실 시간표, 야간 신생아실 위탁 가능 여부, 수유콜 방식, 산모 컨디션별 조정 가능 여부를 확인하세요.'},
-  {q:'모유수유·분유수유 지원은 어떻게 하나요?',a:'수유 자세 지도, 유축기 사용, 분유 보충 기준, 모유수유 강요 여부, 수유콜 빈도를 물어보세요.'},
-  {q:'산전마사지와 산후마사지 가격은 얼마인가요?',a:'무료 포함 횟수, 1회당 가격, 패키지 강매 여부, 마사지사 상주 여부, 제왕절개 산모 가능 시점을 확인하세요.'},
-  {q:'식사는 어떻게 제공되고 보호자 식사는 가능한가요?',a:'하루 식사·간식 횟수, 산모식 구성, 알레르기·당뇨식 가능 여부, 배우자 식사 추가 비용을 확인하세요.'},
-  {q:'퇴실 후 연계 서비스가 있나요?',a:'모유수유 상담, 신생아 케어 상담, 마사지 연장, 산후도우미 연계, 추가 숙박 가능 여부를 물어보세요.'}
-];
+const mealPlans = {
+  '6월': [
+    {type:'조식', title:'미역국 회복식', icon:'🥣', items:['소고기 미역국','잡곡밥','계란찜','나물 반찬']},
+    {type:'중식', title:'단백질 보강식', icon:'🍗', items:['소불고기','두부 샐러드','맑은 국','제철 과일']},
+    {type:'석식', title:'가벼운 균형식', icon:'🐟', items:['연어구이','버섯 들깨탕','채소 반찬','요거트']}
+  ],
+  '7월': [
+    {type:'조식', title:'담백한 산모식', icon:'🍚', items:['황태 미역국','잡곡밥','두부조림','오이무침']},
+    {type:'중식', title:'여름 보양식', icon:'🍲', items:['닭안심 탕','감자조림','샐러드','수박']},
+    {type:'석식', title:'속 편한 저녁', icon:'🥬', items:['흰살생선찜','근대국','나물 반찬','따뜻한 차']}
+  ],
+  '8월': [
+    {type:'조식', title:'수유 에너지식', icon:'🥛', items:['들깨 미역국','잡곡밥','스크램블','견과류']},
+    {type:'중식', title:'철분 보강식', icon:'🥩', items:['불고기','시금치나물','미소국','과일컵']},
+    {type:'석식', title:'편안한 회복식', icon:'🍠', items:['닭가슴살구이','호박죽','채소 반찬','고구마']}
+  ]
+};
 
-const meals = [
-  {key:'breakfast', label:'조식', icon:'🌤️', title:'속 편한 회복식', items:['소고기 미역국','잡곡밥','계란찜','나물 반찬','제철 과일']},
-  {key:'lunch', label:'중식', icon:'☀️', title:'단백질 보강식', items:['소불고기','맑은 국','두부 샐러드','잡곡밥','김치류']},
-  {key:'dinner', label:'석식', icon:'🌙', title:'가벼운 균형식', items:['연어구이','버섯 들깨탕','채소 반찬','잡곡밥','요거트']},
-  {key:'snack', label:'간식', icon:'🍓', title:'수유 간식', items:['두유 또는 우유','견과류','고구마','과일컵','따뜻한 차']}
-];
+const checklist = {
+  '예약': [
+    {title:'예약금과 잔금 납부일을 확인했나요?', hint:'계약서 금액과 납부 기한'},
+    {title:'출산일 변경 시 입실 기준을 확인했나요?', hint:'예정일 전후 조정 가능 여부'},
+    {title:'환불 규정을 문서로 받았나요?', hint:'취소 시점별 환불률'}
+  ],
+  '시설': [
+    {title:'산모실 위치와 채광을 확인했나요?', hint:'소음, 온도, 환기'},
+    {title:'공용 공간 청결 상태를 봤나요?', hint:'복도, 좌욕실, 면회 공간'},
+    {title:'세탁과 소독 운영 방식을 확인했나요?', hint:'개별 세탁 여부'}
+  ],
+  '신생아실': [
+    {title:'아기 수 대비 근무 인력을 확인했나요?', hint:'주간과 야간 구분'},
+    {title:'CCTV 확인 가능 여부를 물어봤나요?', hint:'열람 방식과 시간'},
+    {title:'황달이나 응급상황 대응 절차를 확인했나요?', hint:'연계 병원과 보고 체계'}
+  ],
+  '수유': [
+    {title:'수유콜 방식과 빈도를 확인했나요?', hint:'직수, 유축, 분유 보충'},
+    {title:'모유수유 강요 여부를 확인했나요?', hint:'산모 컨디션 우선'},
+    {title:'유축기와 소모품 제공 범위를 봤나요?', hint:'개별 사용 기준'}
+  ],
+  '마사지': [
+    {title:'산전마사지 포함 횟수를 확인했나요?', hint:'무료와 유료 구분'},
+    {title:'산후마사지 1회 가격을 기록했나요?', hint:'패키지 강매 여부'},
+    {title:'제왕절개 산모 가능 시점을 물어봤나요?', hint:'회복 상태별 기준'}
+  ],
+  '식사': [
+    {title:'하루 식사와 간식 횟수를 확인했나요?', hint:'야식 포함 여부'},
+    {title:'알레르기 대체식이 가능한가요?', hint:'당뇨식, 저염식'},
+    {title:'보호자 식사 비용을 확인했나요?', hint:'1식 가격과 신청 방식'}
+  ],
+  '퇴실': [
+    {title:'퇴실 교육 자료를 제공하나요?', hint:'수유, 목욕, 배꼽 관리'},
+    {title:'퇴실 후 상담 채널이 있나요?', hint:'전화, 카톡, 방문 상담'},
+    {title:'산후도우미 연계가 가능한가요?', hint:'업체와 비용'}
+  ]
+};
 
-let current = [...nurseries];
-let selectedMeal = meals[0];
+const state = {
+  screen:'home',
+  sort:'rank',
+  search:'',
+  month:'6월',
+  checkCategory:'예약'
+};
+
+const STORAGE_CHECKS = 'baby.checklist.v2';
+const STORAGE_MEMOS = 'baby.memos.v2';
 
 const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => document.querySelectorAll(selector);
+const $$ = (selector) => Array.from(document.querySelectorAll(selector));
 
-function showScreen(name){
-  $$('.screen').forEach(s => s.classList.remove('active'));
-  $(`#screen-${name}`).classList.add('active');
-  $$('.bottom-nav button').forEach(b => b.classList.toggle('active', b.dataset.screen === name));
-  window.scrollTo({top:0, behavior:'smooth'});
+let savedChecks = loadJSON(STORAGE_CHECKS, {});
+let savedMemos = loadJSON(STORAGE_MEMOS, {});
+let saveTimer;
+
+function loadJSON(key, fallback){
+  try{
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : fallback;
+  }catch(error){
+    return fallback;
+  }
 }
 
-function rankLabel(n){ return n.rank <= 3 ? ['🥇','🥈','🥉'][n.rank-1] : `${n.rank}위`; }
-
-function renderSummary(){
-  const bestDistance = [...nurseries].sort((a,b)=>a.distance-b.distance)[0];
-  const bestPrice = [...nurseries].sort((a,b)=>a.priceLevel-b.priceLevel)[0];
-  const bestRating = [...nurseries].sort((a,b)=>Number(b.rating)-Number(a.rating))[0];
-  $('#summaryStack').innerHTML = `
-    <article><span>가장 가까움</span><strong>${bestDistance.name}</strong><em>${bestDistance.distance}km · ${bestDistance.time}</em></article>
-    <article><span>가격 접근성</span><strong>${bestPrice.name}</strong><em>${bestPrice.price}</em></article>
-    <article><span>추천 상위</span><strong>${bestRating.name}</strong><em>⭐ ${bestRating.rating}</em></article>
-  `;
+function saveJSON(key, value){
+  try{
+    localStorage.setItem(key, JSON.stringify(value));
+  }catch(error){
+    // 저장 공간을 사용할 수 없는 브라우저에서도 화면 동작은 유지합니다.
+  }
 }
 
-function renderNearList(){
-  $('#nearList').innerHTML = [...nurseries].sort((a,b)=>a.distance-b.distance).slice(0,3).map(n=>`
-    <button class="near-item" data-id="${n.rank}">
-      <span>${rankLabel(n)}</span>
-      <strong>${n.name}</strong>
-      <em>${n.distance}km</em>
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g, (match) => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#039;'
+  })[match]);
+}
+
+function rankLabel(rank){
+  return rank <= 3 ? ['1위','2위','3위'][rank - 1] : `${rank}위`;
+}
+
+function filterNurseries(){
+  const query = state.search.trim().toLowerCase();
+  const result = nurseries.filter((nursery) => {
+    if(!query) return true;
+    return `${nursery.name} ${nursery.old} ${nursery.facility}`.toLowerCase().includes(query);
+  });
+
+  const sorters = {
+    rank:(a,b) => a.rank - b.rank,
+    distance:(a,b) => a.distance - b.distance,
+    price:(a,b) => a.priceLevel - b.priceLevel,
+    rating:(a,b) => b.rating - a.rating
+  };
+
+  return result.sort(sorters[state.sort]);
+}
+
+function sortLabel(){
+  return {
+    rank:'추천순',
+    distance:'거리순',
+    price:'가격순',
+    rating:'평점순'
+  }[state.sort];
+}
+
+function renderHomeCards(){
+  const list = filterNurseries().slice(0, 3);
+  $('#homeResultCount').textContent = `${list.length}곳`;
+  $('#homeCards').innerHTML = list.length ? list.map((nursery) => `
+    <button class="recommend-card" data-detail="${nursery.rank}">
+      <span class="rank-badge">${rankLabel(nursery.rank)}</span>
+      <span class="recommend-main">
+        <strong>${escapeHTML(nursery.name)}</strong>
+        <span>⭐ ${nursery.rating} · 🚗 ${nursery.time}</span>
+      </span>
+      <span class="recommend-meta">
+        <span>${nursery.distance}km</span>
+        <span>${nursery.price}</span>
+      </span>
     </button>
-  `).join('');
+  `).join('') : '<div class="empty-state">검색 결과가 없습니다.</div>';
 }
 
 function renderNurseries(){
-  $('#nurseryList').innerHTML = current.map(n=>`
+  const list = filterNurseries();
+  $('#nurseryStatus').textContent = `${sortLabel()} ${list.length}곳`;
+  $('#nurseryList').innerHTML = list.length ? list.map((nursery) => `
     <article class="nursery-card">
-      <div class="nursery-rank">${rankLabel(n)}</div>
-      <div class="nursery-main">
+      <div class="nursery-top">
+        <span class="rank-badge">${rankLabel(nursery.rank)}</span>
         <div class="nursery-title">
-          <h3>${n.name}</h3>
-          ${n.old ? `<p>${n.old}</p>` : ''}
+          <h3>${escapeHTML(nursery.name)}</h3>
+          ${nursery.old ? `<p>${escapeHTML(nursery.old)}</p>` : ''}
         </div>
-        <div class="metric-grid">
-          <div><span>평점</span><strong>⭐ ${n.rating}</strong></div>
-          <div><span>거리</span><strong>${n.distance}km</strong></div>
-          <div><span>차량</span><strong>${n.time}</strong></div>
-          <div><span>가격</span><strong>${n.price}</strong></div>
-        </div>
-        <p class="card-note">${n.facility}</p>
-        <div class="card-actions">
-          <button data-detail="${n.rank}">상세보기</button>
-          <a href="${n.blog}" target="_blank" rel="noopener">후기검색</a>
-        </div>
+      </div>
+      <div class="metric-list">
+        <div class="metric"><i>⭐</i><span>${nursery.rating}</span></div>
+        <div class="metric"><i>🚗</i><span>${nursery.time}</span></div>
+        <div class="metric"><i>📍</i><span>${nursery.distance}km</span></div>
+        <div class="metric"><i>💰</i><span>${nursery.price}</span></div>
+        <div class="metric"><i>💆</i><span>${nursery.massage}</span></div>
+        <div class="metric"><i>🏥</i><span>병원연계 : ${nursery.hospital}</span></div>
+      </div>
+      <p class="card-note">${escapeHTML(nursery.facility)}</p>
+      <div class="card-actions">
+        <button data-detail="${nursery.rank}">상세보기</button>
+        <a href="${nursery.blog}" target="_blank" rel="noopener">블로그 후기</a>
+        ${nursery.phone
+          ? `<a href="tel:${nursery.phone}">전화하기</a>`
+          : `<a href="${nursery.map}" target="_blank" rel="noopener">전화하기</a>`}
+      </div>
+    </article>
+  `).join('') : '<div class="empty-state">검색 결과가 없습니다.</div>';
+}
+
+function renderScores(){
+  const list = filterNurseries();
+  $('#scoreList').innerHTML = list.length ? list.map((nursery) => `
+    <article class="score-card">
+      <h3>${escapeHTML(nursery.name.replace(' 산후조리원', ''))}</h3>
+      <div class="score-grid">
+        <div class="score-pill"><span>거리</span><strong>${nursery.scores.distance}</strong></div>
+        <div class="score-pill"><span>가격</span><strong>${nursery.scores.price}</strong></div>
+        <div class="score-pill"><span>평점</span><strong>${nursery.scores.rating}</strong></div>
+        <div class="score-pill"><span>마사지</span><strong>${nursery.scores.massage}</strong></div>
+        <div class="score-pill"><span>병원연계</span><strong>${nursery.scores.hospital}</strong></div>
+      </div>
+    </article>
+  `).join('') : '<div class="empty-state">비교할 조리원이 없습니다.</div>';
+}
+
+function renderMonthTabs(){
+  $('#monthTabs').innerHTML = Object.keys(mealPlans).map((month) => `
+    <button class="${month === state.month ? 'active' : ''}" data-month="${month}">${month}</button>
+  `).join('');
+}
+
+function renderMeals(){
+  const plans = mealPlans[state.month];
+  $('#mealGrid').innerHTML = plans.map((meal) => `
+    <article class="meal-card">
+      <div class="meal-photo">
+        <strong>${escapeHTML(meal.title)}</strong>
+        <span>${meal.icon}</span>
+      </div>
+      <div class="meal-body">
+        <p>${state.month} · ${escapeHTML(meal.type)}</p>
+        <ul class="meal-items">
+          ${meal.items.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}
+        </ul>
       </div>
     </article>
   `).join('');
 }
 
-function renderFaq(){
-  $('#faqList').innerHTML = faqs.map((f,i)=>`
-    <label class="faq-item">
-      <input type="checkbox" />
-      <span class="q-icon">Q</span>
-      <span class="faq-text"><strong>${f.q}</strong><em>${f.a}</em></span>
-    </label>
+function renderCheckTabs(){
+  $('#checkTabs').innerHTML = Object.keys(checklist).map((category) => `
+    <button class="${category === state.checkCategory ? 'active' : ''}" data-category="${category}">${category}</button>
   `).join('');
 }
 
-function renderMeals(){
-  $('#mealTabs').innerHTML = meals.map(m=>`<button class="${m.key===selectedMeal.key?'active':''}" data-meal="${m.key}">${m.icon}<span>${m.label}</span></button>`).join('');
-  $('#mealCard').innerHTML = `
-    <div class="meal-icon">${selectedMeal.icon}</div>
-    <div>
-      <p>${selectedMeal.label}</p>
-      <h3>${selectedMeal.title}</h3>
-    </div>
-    <ul>${selectedMeal.items.map(i=>`<li>${i}</li>`).join('')}</ul>
-  `;
+function checkId(category, index){
+  return `${category}-${index}`;
+}
+
+function renderChecklist(){
+  const items = checklist[state.checkCategory];
+  $('#checkList').innerHTML = items.map((item, index) => {
+    const id = checkId(state.checkCategory, index);
+    return `
+      <label class="check-item">
+        <input type="checkbox" data-check-id="${id}" ${savedChecks[id] ? 'checked' : ''} />
+        <span>
+          <strong>${escapeHTML(item.title)}</strong>
+          <span>${escapeHTML(item.hint)}</span>
+        </span>
+      </label>
+    `;
+  }).join('');
+  updateCheckProgress();
+}
+
+function updateCheckProgress(){
+  const total = Object.entries(checklist).reduce((sum, [,items]) => sum + items.length, 0);
+  const checked = Object.keys(savedChecks).filter((key) => savedChecks[key]).length;
+  const ratio = total ? Math.round((checked / total) * 100) : 0;
+  $('#checkProgress').textContent = `${checked} / ${total}`;
+  $('#checkProgressBar').style.width = `${ratio}%`;
+}
+
+function populateMemoNurseries(){
+  $('#memoNursery').innerHTML = nurseries.map((nursery) => `
+    <option value="${nursery.rank}">${escapeHTML(nursery.name)}</option>
+  `).join('');
+}
+
+function getMemo(rank){
+  return savedMemos[rank] || {price:'', massage:'', pros:'', cons:''};
+}
+
+function renderMemo(){
+  const rank = $('#memoNursery').value || String(nurseries[0].rank);
+  const memo = getMemo(rank);
+  $('#memoPrice').value = memo.price;
+  $('#memoMassage').value = memo.massage;
+  $('#memoPros').value = memo.pros;
+  $('#memoCons').value = memo.cons;
+}
+
+function saveMemo(){
+  const rank = $('#memoNursery').value;
+  savedMemos[rank] = {
+    price:$('#memoPrice').value,
+    massage:$('#memoMassage').value,
+    pros:$('#memoPros').value,
+    cons:$('#memoCons').value
+  };
+  saveJSON(STORAGE_MEMOS, savedMemos);
+  $('#memoSaveState').textContent = '저장됨';
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    $('#memoSaveState').textContent = '자동 저장';
+  }, 900);
+}
+
+function renderSortButtons(){
+  $$('[data-sort]').forEach((button) => {
+    button.classList.toggle('active', button.dataset.sort === state.sort);
+  });
+}
+
+function renderNurseryViews(){
+  renderHomeCards();
+  renderNurseries();
+  renderScores();
+  renderSortButtons();
+}
+
+function showScreen(name){
+  state.screen = name;
+  $$('.screen').forEach((screen) => {
+    screen.classList.toggle('active', screen.id === `screen-${name}`);
+  });
+  $$('.bottom-nav button').forEach((button) => {
+    button.classList.toggle('active', button.dataset.screen === name);
+  });
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
 function openDetail(rank){
-  const n = nurseries.find(item => item.rank === Number(rank));
+  const nursery = nurseries.find((item) => item.rank === Number(rank));
+  if(!nursery) return;
+
   $('#modalCard').innerHTML = `
     <button class="modal-close" data-close="modal">×</button>
     <div class="modal-head">
-      <span>${rankLabel(n)}</span>
-      <h2>${n.name}</h2>
-      ${n.old ? `<p>${n.old}</p>` : ''}
+      <span class="rank-badge">${rankLabel(nursery.rank)}</span>
+      <h2>${escapeHTML(nursery.name)}</h2>
+      ${nursery.old ? `<p>${escapeHTML(nursery.old)}</p>` : ''}
     </div>
     <div class="modal-metrics">
-      <div><span>거리</span><strong>${n.distance}km</strong></div>
-      <div><span>차량</span><strong>${n.time}</strong></div>
-      <div><span>가격</span><strong>${n.price}</strong></div>
-      <div><span>마사지</span><strong>${n.massage}</strong></div>
+      <div class="metric"><i>⭐</i><span>${nursery.rating}</span></div>
+      <div class="metric"><i>🚗</i><span>${nursery.time}</span></div>
+      <div class="metric"><i>📍</i><span>${nursery.distance}km</span></div>
+      <div class="metric"><i>💰</i><span>${nursery.price}</span></div>
+      <div class="metric"><i>💆</i><span>${nursery.massage}</span></div>
+      <div class="metric"><i>🏥</i><span>${nursery.hospital}</span></div>
     </div>
-    <p class="modal-review">${n.facility}</p>
+    <p class="modal-review">${escapeHTML(nursery.facility)}</p>
     <div class="modal-links">
-      <a href="${n.blog}" target="_blank" rel="noopener">블로그 후기</a>
-      <a href="${n.map}" target="_blank" rel="noopener">지도 검색</a>
-      ${n.phone ? `<a href="tel:${n.phone}">전화</a>` : ''}
+      <a href="${nursery.blog}" target="_blank" rel="noopener">블로그 후기</a>
+      <a href="${nursery.map}" target="_blank" rel="noopener">지도 검색</a>
+      ${nursery.phone
+        ? `<a href="tel:${nursery.phone}">전화하기</a>`
+        : `<a href="${nursery.map}" target="_blank" rel="noopener">전화하기</a>`}
     </div>
   `;
+
   $('#detailModal').classList.add('open');
-  $('#detailModal').setAttribute('aria-hidden','false');
+  $('#detailModal').setAttribute('aria-hidden', 'false');
 }
 
 function closeModal(){
   $('#detailModal').classList.remove('open');
-  $('#detailModal').setAttribute('aria-hidden','true');
+  $('#detailModal').setAttribute('aria-hidden', 'true');
 }
 
-$$('[data-screen]').forEach(btn => btn.addEventListener('click', () => showScreen(btn.dataset.screen)));
+document.addEventListener('click', (event) => {
+  const screenButton = event.target.closest('[data-screen]');
+  if(screenButton){
+    showScreen(screenButton.dataset.screen);
+    return;
+  }
 
-$$('.sort-pills button').forEach(btn=>btn.addEventListener('click',()=>{
-  $$('.sort-pills button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  current = [...nurseries];
-  if(btn.dataset.sort === 'distance') current.sort((a,b)=>a.distance-b.distance);
-  if(btn.dataset.sort === 'price') current.sort((a,b)=>a.priceLevel-b.priceLevel);
-  if(btn.dataset.sort === 'rank') current.sort((a,b)=>a.rank-b.rank);
-  renderNurseries();
-}));
+  const sortButton = event.target.closest('[data-sort]');
+  if(sortButton){
+    state.sort = sortButton.dataset.sort;
+    renderNurseryViews();
+    return;
+  }
 
-document.addEventListener('click', (e)=>{
-  const detailBtn = e.target.closest('[data-detail]');
-  if(detailBtn) openDetail(detailBtn.dataset.detail);
-  const nearBtn = e.target.closest('.near-item');
-  if(nearBtn) { showScreen('nursery'); setTimeout(()=>openDetail(nearBtn.dataset.id), 250); }
-  const mealBtn = e.target.closest('[data-meal]');
-  if(mealBtn){ selectedMeal = meals.find(m=>m.key===mealBtn.dataset.meal); renderMeals(); }
-  if(e.target.closest('[data-close="modal"]')) closeModal();
+  const detailButton = event.target.closest('[data-detail]');
+  if(detailButton){
+    openDetail(detailButton.dataset.detail);
+    return;
+  }
+
+  const monthButton = event.target.closest('[data-month]');
+  if(monthButton){
+    state.month = monthButton.dataset.month;
+    renderMonthTabs();
+    renderMeals();
+    return;
+  }
+
+  const categoryButton = event.target.closest('[data-category]');
+  if(categoryButton){
+    state.checkCategory = categoryButton.dataset.category;
+    renderCheckTabs();
+    renderChecklist();
+    return;
+  }
+
+  if(event.target.closest('[data-close="modal"]')){
+    closeModal();
+  }
 });
 
-$('#copySummary').addEventListener('click', async()=>{
-  const text = nurseries.slice(0,8).map(n=>`${n.rank}위 ${n.name} / ${n.distance}km / 차량 ${n.time} / ${n.price} / 마사지 ${n.massage}`).join('\n');
-  try{ await navigator.clipboard.writeText(text); alert('카톡 공유용 요약을 복사했습니다.'); }catch(e){ alert(text); }
+document.addEventListener('change', (event) => {
+  const checkbox = event.target.closest('[data-check-id]');
+  if(checkbox){
+    savedChecks[checkbox.dataset.checkId] = checkbox.checked;
+    saveJSON(STORAGE_CHECKS, savedChecks);
+    updateCheckProgress();
+  }
 });
 
-$('#copyChecks').addEventListener('click', async()=>{
-  const text = faqs.map((f,i)=>`${i+1}. ${f.q}`).join('\n');
-  try{ await navigator.clipboard.writeText(text); alert('상담 질문을 복사했습니다.'); }catch(e){ alert(text); }
+$('#searchInput').addEventListener('input', (event) => {
+  state.search = event.target.value;
+  renderNurseryViews();
 });
 
-$('#resetChecks').addEventListener('click', ()=>{
-  $$('#faqList input[type="checkbox"]').forEach(input => input.checked = false);
+$('#memoNursery').addEventListener('change', renderMemo);
+
+['memoPrice','memoMassage','memoPros','memoCons'].forEach((id) => {
+  $(`#${id}`).addEventListener('input', saveMemo);
 });
 
-renderSummary();
-renderNearList();
-renderNurseries();
-renderFaq();
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape') closeModal();
+});
+
+renderMonthTabs();
 renderMeals();
+renderCheckTabs();
+renderChecklist();
+populateMemoNurseries();
+renderMemo();
+renderNurseryViews();
+
+const initialScreen = new URLSearchParams(window.location.search).get('screen');
+if(['home','nursery','meal','checklist','memo'].includes(initialScreen)){
+  showScreen(initialScreen);
+}

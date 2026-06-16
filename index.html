@@ -3,132 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#2f7d46" />
+  <meta name="theme-color" content="#4F8F5A" />
   <title>성남 산후조리원 비교</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="app-shell">
-    <header class="app-header">
-      <div>
-        <p class="eyebrow">수정로 260 기준</p>
-        <h1>산후조리원<br/>모바일 비교</h1>
-      </div>
-      <button class="icon-btn" id="copySummary" aria-label="카톡 요약 복사">↗</button>
-    </header>
-
     <main>
       <section class="screen active" id="screen-home">
-        <div class="hero-card">
-          <div>
-            <span class="mini-label">Seongnam Care</span>
-            <h2>조리원 선택 전<br/>핵심만 빠르게 확인</h2>
-            <p>거리 · 가격 · 마사지 · 후기 · 질문 체크리스트</p>
+        <header class="home-top">
+          <div class="status-row">
+            <span>성남 수정구 기준</span>
+            <span>모바일 비교</span>
           </div>
-          <div class="hero-visual">🤰</div>
-        </div>
+          <h1>성남 산후조리원 비교</h1>
+          <label class="search-box" for="searchInput">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="조리원 검색" autocomplete="off" />
+          </label>
+          <div class="filter-chips" aria-label="조리원 정렬">
+            <button class="active" data-sort="rank">추천순</button>
+            <button data-sort="distance">거리순</button>
+            <button data-sort="price">가격순</button>
+            <button data-sort="rating">평점순</button>
+          </div>
+        </header>
+
+        <section class="home-recommend" aria-labelledby="homeRecommendTitle">
+          <div class="section-title">
+            <h2 id="homeRecommendTitle">추천 조리원</h2>
+            <span id="homeResultCount">3곳</span>
+          </div>
+          <div class="recommend-list" id="homeCards"></div>
+        </section>
 
         <section class="dashboard-grid" aria-label="대시보드 메뉴">
-          <button class="dash-card primary" data-screen="nursery">
+          <button class="dash-card" data-screen="nursery">
             <span class="dash-icon">🏥</span>
             <strong>조리원</strong>
-            <small>거리·가격 비교</small>
+            <small>카드 비교</small>
           </button>
           <button class="dash-card" data-screen="meal">
             <span class="dash-icon">🍱</span>
             <strong>식단표</strong>
-            <small>조·중·석식 예시</small>
+            <small>월별 식단</small>
           </button>
           <button class="dash-card" data-screen="checklist">
             <span class="dash-icon">📋</span>
             <strong>체크리스트</strong>
-            <small>상담 질문</small>
+            <small>상담 항목</small>
           </button>
           <button class="dash-card" data-screen="memo">
-            <span class="dash-icon">✍️</span>
+            <span class="dash-icon">✏️</span>
             <strong>상담메모</strong>
-            <small>가격 기록</small>
+            <small>조리원별 저장</small>
           </button>
-        </section>
-
-        <section class="quick-rank">
-          <div class="section-head compact">
-            <p>Top Pick</p>
-            <h2>가까운 후보</h2>
-          </div>
-          <div id="nearList" class="near-list"></div>
         </section>
       </section>
 
       <section class="screen" id="screen-nursery">
-        <div class="section-head">
+        <header class="screen-head">
           <p>Nursery</p>
-          <h2>조리원</h2>
-          <span>가로 스크롤 없이 카드로 비교합니다.</span>
-        </div>
-        <div class="sort-pills" aria-label="정렬 버튼">
-          <button data-sort="rank" class="active">추천순</button>
-          <button data-sort="distance">가까운순</button>
-          <button data-sort="price">가격순</button>
-        </div>
-        <div class="summary-stack" id="summaryStack"></div>
+          <h2>조리원 비교</h2>
+          <span id="nurseryStatus">추천순 8곳</span>
+        </header>
         <div class="nursery-list" id="nurseryList"></div>
+
+        <section class="compare-section" aria-labelledby="scoreCompareTitle">
+          <div class="section-title">
+            <h2 id="scoreCompareTitle">한눈 비교</h2>
+            <span>등급 요약</span>
+          </div>
+          <div class="score-list" id="scoreList"></div>
+        </section>
       </section>
 
       <section class="screen" id="screen-meal">
-        <div class="section-head">
+        <header class="screen-head">
           <p>Meal Plan</p>
           <h2>식단표</h2>
-          <span>조리원 상담 시 식단 구성 확인용 예시입니다.</span>
-        </div>
-        <div class="meal-date-card">
-          <span>오늘 식단 예시</span>
-          <strong>산모 회복식 기준</strong>
-        </div>
-        <div class="meal-tabs" id="mealTabs"></div>
-        <div class="meal-card" id="mealCard"></div>
-        <div class="info-box">
-          <strong>상담 시 확인할 것</strong>
-          <p>미역국 빈도, 단백질 구성, 간식·야식 제공, 알레르기 대체식, 보호자 식사 비용을 반드시 확인하세요.</p>
-        </div>
+          <span>월별 식단 카드</span>
+        </header>
+        <div class="month-tabs" id="monthTabs" aria-label="식단 월 선택"></div>
+        <div class="meal-grid" id="mealGrid"></div>
       </section>
 
       <section class="screen" id="screen-checklist">
-        <div class="faq-card">
-          <div class="faq-head">
-            <h2>자주 묻는 <mark>질문</mark></h2>
-            <p>투어·상담 때 그대로 물어볼 체크리스트</p>
+        <header class="screen-head">
+          <p>Checklist</p>
+          <h2>상담 체크</h2>
+          <span>체크 상태 자동 저장</span>
+        </header>
+        <div class="category-tabs" id="checkTabs" aria-label="체크리스트 분류"></div>
+        <div class="progress-card">
+          <div>
+            <span>진행률</span>
+            <strong id="checkProgress">0 / 0</strong>
           </div>
-          <div class="check-actions">
-            <button id="resetChecks">체크 초기화</button>
-            <button id="copyChecks">질문 복사</button>
-          </div>
-          <div class="faq-list" id="faqList"></div>
+          <div class="progress-track"><i id="checkProgressBar"></i></div>
         </div>
+        <div class="check-list" id="checkList"></div>
       </section>
 
       <section class="screen" id="screen-memo">
-        <div class="section-head">
-          <p>Consulting Memo</p>
+        <header class="screen-head">
+          <p>Memo</p>
           <h2>상담 메모</h2>
-          <span>조리원 상담 후 바로 기록할 항목</span>
-        </div>
-        <div class="memo-grid">
-          <label>상담 조리원명<input placeholder="예: 헤세드 산후조리원" /></label>
-          <label>기본 2주 가격<input placeholder="예: 580만원" /></label>
-          <label>예약금/환불규정<input placeholder="예: 예약금 30만원" /></label>
-          <label>마사지 포함 여부<input placeholder="예: 산전 1회, 산후 2회" /></label>
-          <label>보호자 출입/숙박<input placeholder="예: 배우자만 가능" /></label>
-          <label>소아과 회진<input placeholder="예: 주 3회" /></label>
-        </div>
+          <span id="memoSaveState">자동 저장</span>
+        </header>
+        <section class="memo-panel">
+          <label class="field-label">
+            조리원 선택
+            <select id="memoNursery"></select>
+          </label>
+          <label class="field-label">
+            가격
+            <input id="memoPrice" type="text" placeholder="예: 2주 580만원" />
+          </label>
+          <label class="field-label">
+            마사지
+            <input id="memoMassage" type="text" placeholder="예: 산전 1회, 산후 2회" />
+          </label>
+          <label class="field-label">
+            장점
+            <textarea id="memoPros" rows="4" placeholder="좋았던 점을 기록"></textarea>
+          </label>
+          <label class="field-label">
+            단점
+            <textarea id="memoCons" rows="4" placeholder="아쉬운 점을 기록"></textarea>
+          </label>
+        </section>
       </section>
     </main>
 
     <nav class="bottom-nav" aria-label="하단 메뉴">
-      <button class="active" data-screen="home"><span>🏠</span>홈</button>
+      <button class="active" data-screen="home"><span>⌂</span>홈</button>
       <button data-screen="nursery"><span>🏥</span>조리원</button>
       <button data-screen="meal"><span>🍱</span>식단표</button>
-      <button data-screen="checklist"><span>📋</span>체크</button>
+      <button data-screen="checklist"><span>☑</span>체크</button>
+      <button data-screen="memo"><span>✎</span>메모</button>
     </nav>
   </div>
 
