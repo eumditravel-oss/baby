@@ -60,9 +60,9 @@ a{
 
 .app-shell{
   width:100%;
-  max-width:390px;
+  max-width:none;
   min-height:100svh;
-  margin:0 auto;
+  margin:0;
   position:relative;
   overflow-x:hidden;
   background:var(--background);
@@ -729,12 +729,12 @@ main{
 
 .bottom-nav{
   position:fixed;
-  left:50%;
+  left:0;
   bottom:0;
   z-index:40;
   width:100%;
-  max-width:390px;
-  transform:translateX(-50%);
+  max-width:none;
+  transform:none;
   display:grid;
   grid-template-columns:repeat(5,minmax(0,1fr));
   gap:2px;
@@ -790,7 +790,7 @@ main{
 .modal-card{
   position:relative;
   width:100%;
-  max-width:390px;
+  max-width:none;
   max-height:86svh;
   overflow:auto;
   border-top-left-radius:30px;
@@ -1022,20 +1022,29 @@ main{
   word-break:keep-all;
 }
 
-@media(min-width:431px){
+@media(min-width:700px) and (hover:hover) and (pointer:fine){
   body{
     padding:20px 0;
   }
 
   .app-shell{
+    max-width:390px;
+    margin:0 auto;
     min-height:calc(100svh - 40px);
     border-radius:34px;
     box-shadow:0 18px 50px rgba(0,0,0,.12);
   }
 
   .bottom-nav{
+    left:50%;
+    max-width:390px;
+    transform:translateX(-50%);
     bottom:20px;
     border-radius:26px;
+  }
+
+  .modal-card{
+    max-width:390px;
   }
 }
 
@@ -1051,6 +1060,33 @@ main{
   .bottom-nav{
     left:0;
     transform:none;
+  }
+}
+
+@supports (-webkit-touch-callout:none){
+  body{
+    padding:0;
+  }
+
+  .app-shell{
+    width:100%;
+    max-width:none;
+    margin:0;
+    border-radius:0;
+    box-shadow:none;
+  }
+
+  .bottom-nav{
+    left:0;
+    bottom:0;
+    width:100%;
+    max-width:none;
+    transform:none;
+    border-radius:0;
+  }
+
+  .modal-card{
+    max-width:none;
   }
 }
 

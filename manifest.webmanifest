@@ -1,0 +1,22 @@
+{
+  "name": "성남 산후조리원 비교",
+  "short_name": "성남 조리원",
+  "description": "성남 산후조리원 비교와 상담 체크를 위한 모바일 앱",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F8F9F5",
+  "theme_color": "#4F8F5A",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
